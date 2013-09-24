@@ -2,6 +2,10 @@ include_recipe "jenkins"
 include_recipe "ant"
 
 include_recipe "php"
+execute "enable pear auto discover" do
+    command "pear config-set auto_discover 1"
+end
+
 execute "install phpqatools" do
     command "pear install --force --alldeps pear.phpqatools.org/phpqatools"
 end
