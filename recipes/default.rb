@@ -32,20 +32,3 @@ execute "update jenkins update center" do
   group node['jenkins']['server']['user']
   creates "#{node['jenkins']['server']['home']}/updates/default.json"
 end
-
-jenkins_cli "install-plugin --username vagrant --password vagrant checkstyle cloverphp dry htmlpublisher jdepend plot pmd violations xunit git"
-
-directory "#{node['jenkins']['server']['home']}/jobs/php-template/" do
-  owner node['jenkins']['server']['user']
-  group node['jenkins']['server']['user']
-  action :create
-end
-
-template "#{node['jenkins']['server']['home']}/jobs/php-template/config.xml" do
-  source "config.xml.erb"
-  owner node['jenkins']['server']['user']
-  group node['jenkins']['server']['user']
-  mode "0644"
-end
-
-jenkins_cli "safe-restart --username vagrant --password vagrant"
