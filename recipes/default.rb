@@ -10,8 +10,8 @@ execute "install phpqatools" do
     command "pear install --force --alldeps pear.phpqatools.org/phpqatools"
 end
 
-php_pear "pear.netpirates.net/phpDox" do
-  action :install
+execute "install phpdox" do
+    command "sudo pear install -f pear.netpirates.net/phpDox-0.5.0"
 end
 
 #workaround for https://github.com/fnichol/chef-jenkins/issues/9
