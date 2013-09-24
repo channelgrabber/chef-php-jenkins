@@ -48,4 +48,4 @@ template "#{node['jenkins']['server']['home']}/jobs/php-template/config.xml" do
   mode "0644"
 end
 
-jenkins_cli "safe-restart --username vagrant --password vagrant "
+jenkins_cli "safe-restart"
