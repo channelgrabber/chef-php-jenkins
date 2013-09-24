@@ -2,9 +2,10 @@ include_recipe "jenkins"
 include_recipe "ant"
 
 include_recipe "php"
-php_pear "pear.phpqatools.org/phpqatools" do
-  action :install
+execute "install phpqatools" do
+    command "pear install --force --alldeps pear.phpqatools.org/phpqatools"
 end
+
 php_pear "pear.netpirates.net/phpDox" do
   action :install
 end
