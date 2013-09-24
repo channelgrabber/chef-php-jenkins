@@ -21,11 +21,6 @@ directory "#{node['jenkins']['server']['home']}/updates/" do
   action :create
 end
 
-execute "update jenkins.jar perms" do
-  command "chmod 755 /home/jenkins/jenkins-cli.jar"
-end
-
-
 execute "update jenkins update center" do
   command "wget http://updates.jenkins-ci.org/update-center.json -qO- | sed '1d;$d'  > #{node['jenkins']['server']['home']}/updates/default.json"
   user node['jenkins']['server']['user']
