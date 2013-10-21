@@ -2,16 +2,21 @@ include_recipe "jenkins"
 include_recipe "ant"
 
 include_recipe "php"
-execute "enable pear auto discover" do
-    command "pear config-set auto_discover 1"
-end
 
-execute "install phpqatools" do
-    command "pear install --force --alldeps pear.phpqatools.org/phpqatools"
+qa_channel = php_pear_channel "pear.phpqatools.org" do
+  action :discover
 end
-
-execute "install phpdox" do
-    command "sudo pear install -f pear.netpirates.net/phpDox-0.5.0"
+php_pear "phpqatools" do
+   channel qa_channel.channel_name
+   action :install
+end
+doc_channel = php_pear_channel "pear.netpirates.net" do
+  action :discover
+end
+php_pear "phpDox" do
+   channel doc_channel.channel_name
+   preferred_state "alpha"
+   action :install
 end
 
 #workaround for https://github.com/fnichol/chef-jenkins/issues/9
