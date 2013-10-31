@@ -5,7 +5,7 @@ include_recipe "php"
 
 #prerequisites
 channels = ["pear.phpunit.de", "pear.pdepend.org", "pear.phpmd.org"]
-packages = ["xsl"]
+packages = ["php5-xsl"]
 
 channels.each do |channel|
   php_pear_channel channel do
@@ -14,8 +14,7 @@ channels.each do |channel|
 end
 
 packages.each do |package|
-  php_pear package do
-    preferred_state "alpha"
+  package package do
 	action :install
   end
 end
