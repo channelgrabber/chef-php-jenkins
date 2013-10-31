@@ -3,6 +3,24 @@ include_recipe "ant"
 
 include_recipe "php"
 
+#prerequisites
+channels = ["pear.phpunit.de", "pear.pdepend.org", "pear.phpmd.org"]
+packages = ["xsl"]
+
+channels.each do |channel|
+  php_pear_channel channel do
+    action :discover
+  end
+end
+
+packages.each do |package|
+  php_pear package do
+    preferred_state "alpha"
+	action :install
+  end
+end
+
+#installation
 qa_channel = php_pear_channel "pear.phpqatools.org" do
   action :discover
 end
@@ -13,10 +31,6 @@ php_pear "phpqatools" do
 end
 doc_channel = php_pear_channel "pear.netpirates.net" do
   action :discover
-end
-php_pear "xsl" do
-   preferred_state "alpha"
-   action :install
 end
 php_pear "phpDox" do
    channel doc_channel.channel_name
