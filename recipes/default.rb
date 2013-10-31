@@ -4,7 +4,7 @@ include_recipe "ant"
 include_recipe "php"
 
 #prerequisites
-channels = ["pear.phpunit.de", "pear.pdepend.org", "pear.phpmd.org", "pear.symfony.com", "components.ez.no"]
+channels = ["pear.phpunit.de", "pear.pdepend.org", "pear.phpmd.org", "pear.symfony.com", "components.ez.no", "nikic.github.com/pear"]
 packages = ["php5-xsl"]
 
 channels.each do |channel|
