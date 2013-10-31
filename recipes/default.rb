@@ -8,6 +8,7 @@ qa_channel = php_pear_channel "pear.phpqatools.org" do
 end
 php_pear "phpqatools" do
    channel qa_channel.channel_name
+   preferred_state "alpha"
    action :install
 end
 doc_channel = php_pear_channel "pear.netpirates.net" do
