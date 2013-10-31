@@ -14,6 +14,10 @@ end
 doc_channel = php_pear_channel "pear.netpirates.net" do
   action :discover
 end
+php_pear "xsl" do
+   preferred_state "alpha"
+   action :install
+end
 php_pear "phpDox" do
    channel doc_channel.channel_name
    preferred_state "alpha"
