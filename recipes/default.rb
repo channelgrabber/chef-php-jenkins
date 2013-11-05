@@ -41,6 +41,7 @@ end
 directory "#{node['jenkins']['server']['home']}/updates/" do
   owner node['jenkins']['server']['user']
   group node['jenkins']['server']['user']
+  recursive true
   action :create
 end
 
