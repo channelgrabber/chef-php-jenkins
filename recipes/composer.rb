@@ -7,7 +7,8 @@ packages = [
     "pdepend/pdepend=1.1.*",
     "phpmd/phpmd=1.4.*",
     "sebastian/phpcpd=2.0.*",
-    "theseer/phpdox=0.6.*"
+    "theseer/phpdox=0.6.*",
+    "mayflower/php-codebrowser=1.1.*"
 ]
 
 packages.each do |require|
