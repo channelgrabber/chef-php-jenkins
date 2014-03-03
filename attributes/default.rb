@@ -1,1 +1,1 @@
-default['php-jenkins']['install_method'] = 'pear';
+default['php-jenkins']['install_method'] = 'composer';
