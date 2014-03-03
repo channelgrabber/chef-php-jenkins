@@ -23,5 +23,5 @@ packages.each do |require|
 end
 
 magic_shell_environment "PATH" do
-    value "$PATH:#{File.join(node['jenkins']['server']['home'], '.composer/vendor/bin')}"
+    value "#{File.join(node['jenkins']['server']['home'], '.composer/vendor/bin')}:$PATH"
 end
