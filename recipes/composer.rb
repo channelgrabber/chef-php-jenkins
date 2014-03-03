@@ -22,6 +22,10 @@ packages.each do |require|
     end
 end
 
-magic_shell_environment "PATH" do
-    value "#{File.join(node['jenkins']['server']['home'], '.composer/vendor/bin')}:$PATH"
+template "/etc/profile.d/composer.sh" do
+    source "environment.erb"
+    owner "root"
+    group "root"
+    mode "0755"
+    action :create
 end
