@@ -16,9 +16,12 @@ packages.each do |require|
         group node['jenkins']['server']['group']
         environment(
             'HOME' => node['jenkins']['server']['home'],
-            'COMPOSER_HOME' => File.join(node['jenkins']['server']['home'], '.composer'),
-            'COMPOSER_BIN_DIR' => '/usr/local/bin'
+            'COMPOSER_HOME' => File.join(node['jenkins']['server']['home'], '.composer')
         )
         action :run
     end
+end
+
+magic_shell_environment "PATH" do
+    value "$PATH:#{File.join(node['jenkins']['server']['home'], '.composer/vendor/bin')}"
 end
