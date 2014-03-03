@@ -10,13 +10,15 @@ packages = [
     "theseer/phpdox=0.6.*"
 ]
 
+composer_home = File.join(#node['jenkins']['server']['home'], '.composer')
+
 packages.each do |require|
     execute "composer global require '#{require}'" do
         user node['jenkins']['server']['user']
         group node['jenkins']['server']['group']
         environment(
             'HOME' => #node['jenkins']['server']['home'],
-            'COMPOSER_HOME' => File.join(#node['jenkins']['server']['home'], '.composer'),
+            'COMPOSER_HOME' => composer_home,
             'COMPOSER_BIN_DIR' => '/usr/local/bin'
         )
         action :run
