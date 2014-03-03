@@ -7,7 +7,7 @@ packages = {
     "pdepend/pdepend=1.1.*" => "pdepend",
     "phpmd/phpmd=1.4.*" => "phpmd",
     "sebastian/phpcpd=2.0.*" => "phpcpd",
-    "theseer/phpdox=" => "0.6.*" => "phpdox"
+    "theseer/phpdox=0.6.*" => "phpdox"
 }
 
 packages.each do |require, executable|
