@@ -9,4 +9,4 @@ depends 'java'
 depends 'ant'
 depends 'jenkins'
 depends 'php'
-
+depends 'composer'
