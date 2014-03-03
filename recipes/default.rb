@@ -3,6 +3,15 @@ include_recipe "ant"
 
 include_recipe "php"
 
+#prerequisites
+packages = ["php5-xsl"]
+packages.each do |package_name|
+  package package_name do
+	action :install
+  end
+end
+
+#installation
 include_recipe "php-jenkins::#{node['php-jenkins']['install_method']}"
 
 #workaround for https://github.com/fnichol/chef-jenkins/issues/9

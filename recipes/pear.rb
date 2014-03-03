@@ -1,16 +1,8 @@
 #prerequisites
 channels = ["pear.phpunit.de", "pear.pdepend.org", "pear.phpmd.org", "pear.symfony.com", "components.ez.no", "nikic.github.com/pear"]
-packages = ["php5-xsl"]
-
 channels.each do |channel|
   php_pear_channel channel do
     action :discover
-  end
-end
-
-packages.each do |package_name|
-  package package_name do
-	action :install
   end
 end
 
