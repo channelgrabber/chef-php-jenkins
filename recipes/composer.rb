@@ -14,11 +14,11 @@ packages.each do |require|
     execute "composer global require '#{require}'" do
         user node['jenkins']['server']['user']
         group node['jenkins']['server']['group']
-        environment({
+        environment(
             'HOME' => #node['jenkins']['server']['home'],
             'COMPOSER_HOME' => File.join(#node['jenkins']['server']['home'], '.composer'),
             'COMPOSER_BIN_DIR' => '/usr/local/bin'
-        })
+        )
         action :run
     end
 end
