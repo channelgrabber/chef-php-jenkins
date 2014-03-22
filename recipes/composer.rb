@@ -30,3 +30,12 @@ template "/etc/profile.d/composer.sh" do
     mode "0755"
     action :create
 end
+
+ruby_block "Add global composer bin to path" do
+  block do
+    composer_bin = File.join(node['jenkins']['server']['home'], '.composer/vendor/bin')
+    fe = Chef::Util::FileEdit.new(File.join(node['jenkins']['server']['home'], '.profile'))
+    fe.insert_line_if_no_match(/#{composer_bin}/, "export PATH=#{composer_bin}:$PATH")
+    fe.write_file
+  end
+end
